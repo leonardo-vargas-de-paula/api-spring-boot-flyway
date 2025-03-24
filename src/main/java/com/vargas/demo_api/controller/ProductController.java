@@ -1,15 +1,35 @@
 package com.vargas.demo_api.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.vargas.demo_api.dto.ProductDTO;
+import com.vargas.demo_api.model.Product;
+import com.vargas.demo_api.repository.ProductRepository;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/products")
 public class ProductController {
 
+    @Autowired
+    ProductRepository productRepository;
 
-    //teste
-    public String hello(){
-        return "Hello World\n";
+
+    @GetMapping
+    public ResponseEntity getAll() {
+        List<Product> products = productRepository.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(products);
     }
+
+    @PostMapping
+    public ResponseEntity save(@RequestBody ProductDTO pDto) {
+        var product = new Product();
+        BeanUtils.copyProperties(pDto, product);
+        return ResponseEntity.status(HttpStatus.CREATED).body(productRepository.save(product));
+    }
+
 }
