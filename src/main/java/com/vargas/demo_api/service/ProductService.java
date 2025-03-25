@@ -35,7 +35,7 @@ public class ProductService {
 
     public void delete(Integer id) {
 
-        if (productRepository.existsById(id)) {
+        if (!productRepository.existsById(id)) {
             throw new RecursoNaoEncontradoException("Produto com ID "+id +" não encontrado.");
         }
 
