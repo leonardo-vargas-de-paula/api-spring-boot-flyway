@@ -4,4 +4,4 @@
 <li>Java 21</li>
 <li>Flyway 9.20.1</li>
 <li> PostgreSQL 15</li>
-<li>Lombok/li>
+<li>Lombok</li>
