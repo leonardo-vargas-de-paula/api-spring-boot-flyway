@@ -1,2 +1,2 @@
-# api-spring-boot-flyway
-Estudos sobre API rest.
+# api-spring-boot
+Branch de desenvolvimento.
