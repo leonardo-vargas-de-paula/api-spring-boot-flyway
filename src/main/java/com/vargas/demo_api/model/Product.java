@@ -1,13 +1,12 @@
 package com.vargas.demo_api.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.UUID;
 
 @Table(name = "Product")
 @Entity
@@ -18,7 +17,7 @@ import lombok.Setter;
 public class Product {
     @Id
     @GeneratedValue
-    private Integer id;
+    private UUID id;
     private String name;
     private Long price;
 }
